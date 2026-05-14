@@ -1,0 +1,158 @@
+{
+  "name": "opencode",
+  "displayName": "OpenCode - Qwen AI Agent",
+  "description": "A powerful VS Code extension for coding with local Qwen LLM models",
+  "version": "1.0.0",
+  "publisher": "salmantoprak",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "AI",
+    "Code Generation",
+    "Linters",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "opencode.generateCode",
+        "title": "OpenCode: Generate Code",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.explainCode",
+        "title": "OpenCode: Explain Code",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.refactorCode",
+        "title": "OpenCode: Refactor Code",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.generateDocumentation",
+        "title": "OpenCode: Generate Documentation",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.detectBugs",
+        "title": "OpenCode: Detect Bugs",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.runCode",
+        "title": "OpenCode: Run Code in Terminal",
+        "category": "OpenCode"
+      },
+      {
+        "command": "opencode.openChat",
+        "title": "OpenCode: Open Chat",
+        "category": "OpenCode"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "opencode.generateCode",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "opencode.explainCode",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "opencode.refactorCode",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "opencode.runCode",
+        "key": "ctrl+shift+x",
+        "mac": "cmd+shift+x",
+        "when": "editorTextFocus"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "opencode",
+          "title": "OpenCode",
+          "icon": "resources/opencode-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "opencode": [
+        {
+          "id": "opencode.chat",
+          "name": "OpenCode Chat"
+        },
+        {
+          "id": "opencode.settings",
+          "name": "Settings"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OpenCode",
+      "properties": {
+        "opencode.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:1234",
+          "description": "URL of the Qwen LLM server"
+        },
+        "opencode.model": {
+          "type": "string",
+          "default": "qwen",
+          "description": "Model name to use (e.g., qwen, qwen2, qwen2.5)"
+        },
+        "opencode.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "description": "Maximum tokens for API responses"
+        },
+        "opencode.temperature": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Temperature for response generation"
+        },
+        "opencode.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-save files after generation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.84.0",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "uuid": "^9.0.0"
+  }
+}
