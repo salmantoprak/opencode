@@ -1,0 +1,28 @@
+name: opencode
+publisher: salmantoprak
+version: 1.0.0
+displayName: OpenCode - Qwen AI Agent
+description: A powerful VS Code extension for coding with local Qwen LLM models. Generate, explain, refactor, and run code with AI assistance.
+categories:
+  - AI
+  - Code Generation
+  - Linters
+keywords:
+  - qwen
+  - llm
+  - ai
+  - code generation
+  - copilot
+  - local
+  - privacy
+repository: https://github.com/salmantoprak/opencode
+bugs: https://github.com/salmantoprak/opencode/issues
+icon: resources/icon.png
+engines:
+  vscode: ^1.84.0
+license: MIT
+author:
+  name: Salman Toprak
+galleryBanner:
+  color: '#1e1e1e'
+  theme: dark
